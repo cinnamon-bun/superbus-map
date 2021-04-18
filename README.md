@@ -1,6 +1,4 @@
-# Typed Bus
+# Loudmap
 
-(WIP)
-
-Experiments with message busses.
+A Map implementation that emits events on a [Superbus](https://github.com/cinnamon-bun/superbus/).
 
