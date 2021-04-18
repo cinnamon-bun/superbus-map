@@ -1,4 +1,4 @@
-import { Superbus } from './superbus';
+import { Superbus } from 'superbus';
 import { deepEqual } from './utils';
 
 //let log = console.log;
