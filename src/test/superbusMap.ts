@@ -1,7 +1,7 @@
 import t = require('tap');
 //t.runOnly = true;
 
-import { ObservableMap } from '../observableMap'
+import { SuperbusMap } from '../superbusMap'
 
 //================================================================================ 
 // LOGGING
@@ -12,7 +12,7 @@ let log = console.log;
 //================================================================================ 
 
 t.test('map: basics (without async)', async (t: any) => {
-    let map = new ObservableMap();
+    let map = new SuperbusMap();
 
     t.same(map.size, 0, 'size 0');
     t.same(map.has('a'), false, 'has("a") is false');
@@ -43,23 +43,23 @@ t.test('map: basics (without async)', async (t: any) => {
 });
 
 t.test('map: constructor', async (t: any) => {
-    let m1 = new ObservableMap();
+    let m1 = new SuperbusMap();
     m1.set('a', 'a1');
-    let m2 = new ObservableMap(m1);
-    t.same(m2.get('a'), 'a1', 'cloned from ObservableMap');
+    let m2 = new SuperbusMap(m1);
+    t.same(m2.get('a'), 'a1', 'cloned from SuperbusMap');
 
     let map = new Map<string, string>();
     map.set('b', 'b1');
-    let m3 = new ObservableMap(map);
+    let m3 = new SuperbusMap(map);
     t.same(m3.get('b'), 'b1', 'cloned from Map');
 
-    let m4 = new ObservableMap(map.entries());
+    let m4 = new SuperbusMap(map.entries());
     t.same(m4.get('b'), 'b1', 'cloned from iterable');
 
-    let m5 = new ObservableMap([['c', 'c1']]);
+    let m5 = new SuperbusMap([['c', 'c1']]);
     t.same(m5.get('c'), 'c1', 'cloned from array');
 
-    let m6 = new ObservableMap(null, '|');
+    let m6 = new SuperbusMap(null, '|');
     let event6Happened = false;
     m6.events.on('added|a', (channel, data) => {
         event6Happened = true;
@@ -67,7 +67,7 @@ t.test('map: constructor', async (t: any) => {
     m6.set('a', 'a1');
     t.same(event6Happened, true, 'sep was changed with (null, "|")');
 
-    let m7 = new ObservableMap(undefined, '/');
+    let m7 = new SuperbusMap(undefined, '/');
     let event7Happened = false;
     m7.events.on('added/a', (channel, data) => {
         event7Happened = true;
@@ -75,7 +75,7 @@ t.test('map: constructor', async (t: any) => {
     m7.set('a', 'a1');
     t.same(event7Happened, true, 'sep was changed with (undefined, "/")');
 
-    let m8 = new ObservableMap();
+    let m8 = new SuperbusMap();
     let event8Happened = false;
     m8.events.on('added:a', (channel, data) => {
         event8Happened = true;
@@ -92,7 +92,7 @@ interface Event {
     data: any;
 }
 t.test('map: events', async (t: any) => {
-    let map = new ObservableMap();
+    let map = new SuperbusMap();
 
     let events: Event[] = [];
     map.events.on('added', (channel, data) => {

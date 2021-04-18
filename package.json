@@ -1,11 +1,11 @@
 {
-  "name": "loudmap",
+  "name": "superbus-map",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "repository": "",
   "author": "Cinnamon <cinnamon_bun_github@fastmail.com>",
-  "homepage": "https://github.com/cinnamon-bun/loudmap",
+  "homepage": "https://github.com/cinnamon-bun/superbus-map",
   "license": "AGPL-3.0",
   "scripts": {
     "clean": "rm -rf build coverage .nyc_output",

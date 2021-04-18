@@ -6,7 +6,7 @@ let log = (...args: any[]) => {};
 let mapdebug =     '        🗺';
 
 /*
- *   ObservableMap
+ *   SuperbusMap
  *
  *   This is almost identical to the built-in Map class except:
  *      - You can subscribe to events when the data changes
@@ -41,7 +41,7 @@ let mapdebug =     '        🗺';
  *    entire system to wait for all the event handlers to finish running
  *    before proceeding, including synchronous and async handlers.
  *   For this to work you must "await" the write methods
- *    of ObservableMap (set, delete, clear).
+ *    of SuperbusMap (set, delete, clear).
  *   In other words,
  *   
  *       // set a value...
@@ -66,16 +66,16 @@ let mapdebug =     '        🗺';
  *  line of code runs.
  */
 
-export class ObservableMap<K extends string, V> {
+export class SuperbusMap<K extends string, V> {
     events: Superbus<string>;
     _map: Map<K, V>;
     _sep: string;  // character used to separate channel name from id, like 'changed:123'
     constructor(
-        mapToClone?: ObservableMap<K,V> | Map<K,V> | Array<[K, V]> | Iterable<[K, V]> | null | undefined,
+        mapToClone?: SuperbusMap<K,V> | Map<K,V> | Array<[K, V]> | Iterable<[K, V]> | null | undefined,
         sep: string = ':'
     ) {
         this._sep = sep;
-        if (mapToClone instanceof ObservableMap) {
+        if (mapToClone instanceof SuperbusMap) {
             this._map = new Map<K, V>(mapToClone._map);
         } else if (mapToClone != null) {
             this._map = new Map<K, V>(mapToClone);
