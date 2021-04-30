@@ -28,6 +28,6 @@
   "dependencies": {
     "fast-deep-equal": "^3.1.3",
     "rfdc": "^1.3.0",
-    "superbus": "^1.1.0"
+    "superbus": "^1.2.0"
   }
 }
