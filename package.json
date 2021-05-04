@@ -1,6 +1,6 @@
 {
   "name": "superbus-map",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "",
   "main": "build/superbusMap.js",
   "types": "build/superbusMap.d.ts",
