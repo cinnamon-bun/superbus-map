@@ -61,7 +61,7 @@ t.test('map: constructor', async (t: any) => {
 
     let m6 = new SuperbusMap(null, '|');
     let event6Happened = false;
-    m6.events.on('added|a', (channel, data) => {
+    m6.bus.on('added|a', (channel, data) => {
         event6Happened = true;
     });
     m6.set('a', 'a1');
@@ -69,7 +69,7 @@ t.test('map: constructor', async (t: any) => {
 
     let m7 = new SuperbusMap(undefined, '/');
     let event7Happened = false;
-    m7.events.on('added/a', (channel, data) => {
+    m7.bus.on('added/a', (channel, data) => {
         event7Happened = true;
     });
     m7.set('a', 'a1');
@@ -77,7 +77,7 @@ t.test('map: constructor', async (t: any) => {
 
     let m8 = new SuperbusMap();
     let event8Happened = false;
-    m8.events.on('added:a', (channel, data) => {
+    m8.bus.on('added:a', (channel, data) => {
         event8Happened = true;
     });
     m8.set('a', 'a1');
@@ -95,28 +95,28 @@ t.test('map: events', async (t: any) => {
     let map = new SuperbusMap();
 
     let events: Event[] = [];
-    map.events.on('added', (channel, data) => {
+    map.bus.on('added', (channel, data) => {
         events.push({ id: 'a', channel, data });
     });
-    map.events.on('added:aaa', (channel, data) => {
+    map.bus.on('added:aaa', (channel, data) => {
         events.push({ id: 'a:aaa', channel, data });
     });
-    map.events.on('changed', (channel, data) => {
+    map.bus.on('changed', (channel, data) => {
         events.push({ id: 'c', channel, data });
     });
-    map.events.on('changed:aaa', (channel, data) => {
+    map.bus.on('changed:aaa', (channel, data) => {
         events.push({ id: 'c:aaa', channel, data });
     });
-    map.events.on('deleted', (channel, data) => {
+    map.bus.on('deleted', (channel, data) => {
         events.push({ id: 'd', channel, data });
     });
-    map.events.on('deleted:aaa', (channel, data) => {
+    map.bus.on('deleted:aaa', (channel, data) => {
         events.push({ id: 'd:aaa', channel, data });
     });
-    map.events.on('deleted:bbb', (channel, data) => {
+    map.bus.on('deleted:bbb', (channel, data) => {
         events.push({ id: 'd:bbb', channel, data });
     });
-    map.events.on('*', (channel, data) => {
+    map.bus.on('*', (channel, data) => {
         events.push({ id: 'star', channel, data });
     });
 

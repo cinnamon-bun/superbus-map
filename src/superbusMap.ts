@@ -66,8 +66,10 @@ let mapdebug =     '        🗺';
  *  line of code runs.
  */
 
+export type SuperbusMapEvents = 'added' | 'changed' | 'deleted';
+
 export class SuperbusMap<K extends string, V> {
-    events: Superbus<string>;
+    bus: Superbus<string>;
     _map: Map<K, V>;
     _sep: string;  // character used to separate channel name from id, like 'changed:123'
     constructor(
@@ -83,7 +85,7 @@ export class SuperbusMap<K extends string, V> {
             this._map = new Map<K, V>();
         }
 
-        this.events = new Superbus<string>(sep);
+        this.bus = new Superbus<string>(sep);
     }
     // WRITE
     async set(key: K, value: V): Promise<'added' | 'changed' | 'unchanged'> {
@@ -95,12 +97,12 @@ export class SuperbusMap<K extends string, V> {
         let oldValue = this.get(key);
         this._map.set(key, value);
         if (oldValue === undefined) {
-            await this.events.sendAndWait('added' + this._sep + key, { key, value });
+            await this.bus.sendAndWait('added' + this._sep + key, { key, value });
             return 'added';
         } else {
             if (!deepEqual(value, oldValue)) {
                 // only send 'changed' when the data is actually different
-                await this.events.sendAndWait('changed' + this._sep + key, { key, value, oldValue });
+                await this.bus.sendAndWait('changed' + this._sep + key, { key, value, oldValue });
                 return 'changed';
             } else {
                 // no event is sent for this
@@ -122,7 +124,7 @@ export class SuperbusMap<K extends string, V> {
             return false;
         }
         this._map.delete(key);
-        await this.events.sendAndWait('deleted' + this._sep + key, { key, oldValue });
+        await this.bus.sendAndWait('deleted' + this._sep + key, { key, oldValue });
         return true;
     }
     // READ
