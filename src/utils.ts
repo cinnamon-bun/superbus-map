@@ -1,10 +1,13 @@
 import equal from 'fast-deep-equal';
-import clone from 'rfdc';
+//import clone from 'rfdc';
 
 export let deepEqual = equal;
-export let deepCopy = clone();
+//export let deepCopy = clone();
 
 //================================================================================
+
+/*
+// these are not used
 
 export let log = console.log;
     
@@ -22,3 +25,4 @@ export let remap = (x: number, oldLo: number, oldHi: number, newLo: number, newH
 export let randRange = (lo: number, hi: number): number =>
     remap(Math.random(), 0, 1, lo, hi);
 
+*/
