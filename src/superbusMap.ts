@@ -78,6 +78,7 @@ export class SuperbusMap<K extends string, V> {
     ) {
         this._sep = sep;
         if (mapToClone instanceof SuperbusMap) {
+            // note we don't copy the sep char from the other cloned superbusMap
             this._map = new Map<K, V>(mapToClone._map);
         } else if (mapToClone != null) {
             this._map = new Map<K, V>(mapToClone);
@@ -150,7 +151,7 @@ export class SuperbusMap<K extends string, V> {
 // has(k): boolean
 
 // ITERATION
-// for ([let key, value] of myMap) {}
+// for (let [key, value] of myMap) {}
 // for (let key of myMap.keys()) {}
 // for (let value of myMap.values()) {}
 // for (let [k, v] of myMap.entries()) {}
