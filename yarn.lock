@@ -2151,10 +2151,10 @@ strip-bom@^3.0.0:
   resolved "https://registry.yarnpkg.com/strip-bom/-/strip-bom-3.0.0.tgz#2334c18e9c759f7bdd56fdef7e9ae3d588e68ed3"
   integrity sha1-IzTBjpx1n3vdVv3vfprj1YjmjtM=
 
-superbus@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/superbus/-/superbus-2.0.1.tgz#84765884b784e58b728ddb48ae59387054b66135"
-  integrity sha512-ZxCYnPwur+EbmRCMQDGClGn0ecy4o3nyAZ6Nnqh3JaHKzALWkxk0XKe3avA7nyJ4EFKgf77d2JV/KDLOQAaJRw==
+superbus@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/superbus/-/superbus-2.0.2.tgz#fc8104cddbd4916ab9fdfd167a5e50b3e90e8a2f"
+  integrity sha512-5JZJKxTEd/WWjShXpmRkZzJio7Gw4V1vWL0VTWZ+r5QVvZP6cwSc8nbW0akprX3WTeFOANmYfinQPDGpoKac7A==
 
 supports-color@^5.3.0:
   version "5.5.0"
